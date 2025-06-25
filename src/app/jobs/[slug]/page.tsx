@@ -4,13 +4,7 @@ import { jobs } from '@/data/jobs'
 import { notFound } from 'next/navigation'
 import { useState } from 'react'
 
-type Props = {
-  params: {
-    slug: string
-  }
-}
-
-export default function JobDetailPage({ params }: Props) {
+export default function JobDetailPage({ params }: { params: { slug: string } }) {
   const job = jobs.find((job) => job.slug === params.slug)
   const [isOpen, setIsOpen] = useState(false)
   const [formData, setFormData] = useState({
