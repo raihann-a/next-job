@@ -4,7 +4,12 @@ import { jobs } from '@/data/jobs'
 import { notFound } from 'next/navigation'
 import { useState } from 'react'
 
-export default function JobDetailPage({ params }: { params: { slug: string } }) {
+interface PageProps {
+  params: { slug: string }
+  searchParams?: { [key: string]: string | string[] | undefined }
+}
+
+export default function JobDetailPage({ params }: PageProps) {
   const job = jobs.find((job) => job.slug === params.slug)
   const [isOpen, setIsOpen] = useState(false)
   const [formData, setFormData] = useState({
